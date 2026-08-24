@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "catppuccin-macchiato";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #24273a;
+  --color-base-200: #1e2030;
+  --color-base-300: #181926;
+  --color-base-content: #cad3f5;
+
+  --color-primary: #c6a0f6;
+  --color-primary-content: #181926;
+
+  --color-secondary: #7dc4e4;
+  --color-secondary-content: #181926;
+
+  --color-accent: #c6a0f6;
+  --color-accent-content: #181926;
+
+  --color-neutral: #8bd5ca;
+  --color-neutral-content: #181926;
+
+  --color-info: #8aadf4;
+  --color-info-content: #181926;
+  --color-success: #a6da95;
+  --color-success-content: #181926;
+  --color-warning: #eed49f;
+  --color-warning-content: #181926;
+  --color-error: #ed8796;
+  --color-error-content: #181926;
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background: #181926;
+  color: #cad3f5;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Animated ambient background behind everything */
+.bgeffect {
+  position: fixed;
+  inset: 0;
+  z-index: -9999;
+  background:
+    linear-gradient(rgba(16, 18, 15, 0.78), rgba(16, 18, 15, 0.9)),
+    radial-gradient(
+      60% 50% at 12% 12%,
+      rgba(215, 255, 100, 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 45% at 88% 34%,
+      rgba(158, 231, 255, 0.11),
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.018) 0 1px,
+      transparent 1px 4px
+    );
+  animation: bgeffect-drift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+}
+
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 8% 0 auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(215, 255, 100, 0.5),
+    transparent
+  );
+}
+
+.hero-panel {
+  background: rgba(20, 23, 18, 0.66);
+  border: 1px solid rgba(215, 255, 100, 0.2);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes bgeffect-drift {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+    filter: hue-rotate(0deg);
+  }
+  to {
+    transform: scale(1.15) translate3d(-2%, -2%, 0);
+    filter: hue-rotate(18deg);
+  }
+}
+
+/* Blinking terminal caret */
+.caret::after {
+  content: "\2588";
+  margin-left: 2px;
+  animation: caret-blink 1s step-end infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Pulsing online status dot */
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background-color: var(--color-success);
+}
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-success);
+  animation: status-pulse 2s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Subtle CRT scanline overlay matching visual.png */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+  background-size: 100% 3px;
+  z-index: 1;
+  opacity: 0.45;
+}
