@@ -82,11 +82,12 @@ export const site = {
   music: {
     title: "Cozy Coffee Shop ☕ Jazz",
     artist: "Spotify Playlist",
-    coverUrl: "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c089d11c70e4089ba3e6ac56",
+    coverUrl:
+      "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c089d11c70e4089ba3e6ac56",
 
     // Spotify URL powering the floating music box (playlist, album, or track).
     // Played through the official Spotify Embed — visitors hear it without logging in.
-    playlistUrl: "https://open.spotify.com/playlist/5vVSfOsF8YRueAI1dOI0Lh",
+    playlistUrl: "https://open.spotify.com/playlist/37i9dQZF1E8OLVmeMeYOIh",
   },
 
   terminalBootSequence: [
