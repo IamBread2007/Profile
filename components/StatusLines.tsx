@@ -3,9 +3,18 @@
 import { useEffect, useState } from "react";
 import { FaSpotify } from "react-icons/fa6";
 import { TbCake, TbBrandVscode } from "react-icons/tb";
-import { SiRiotgames } from "react-icons/si";
 import { site } from "@/lib/config";
 import { useStatuses } from "@/lib/lanyard";
+
+function KuroGamesIcon({ className }: { className?: string }) {
+  return (
+    <img
+      src="/images/kuro-games-icon.png"
+      alt="Kuro Games"
+      className={`${className || "size-5"} object-contain shrink-0`}
+    />
+  );
+}
 
 function useNow(intervalMs = 1000) {
   const [now, setNow] = useState<Date | null>(null);
@@ -80,7 +89,7 @@ export default function StatusLines() {
 
       <p className="flex items-center gap-2">
         <FaSpotify
-          className={`size-5 ${statuses.spotify ? "text-[#1ed760]" : ""}`}
+          className={`size-5 shrink-0 ${statuses.spotify ? "text-[#1ed760]" : ""}`}
         />
         {statuses.enabled ? (
           statuses.spotify ? (
@@ -105,7 +114,7 @@ export default function StatusLines() {
       </p>
 
       <p className="flex items-center gap-2">
-        <TbBrandVscode className="size-5" />
+        <TbBrandVscode className="size-5 shrink-0" />
         {statuses.editor ? (
           <span>
             Coding in {statuses.editor.name}
@@ -117,7 +126,7 @@ export default function StatusLines() {
       </p>
 
       <p className="flex items-center gap-2">
-        <SiRiotgames className="size-5" />
+        <KuroGamesIcon className="size-5 shrink-0" />
         {statuses.game ? <span>Playing {statuses.game.name}</span> : <span>Not playing anything</span>}
       </p>
     </div>
