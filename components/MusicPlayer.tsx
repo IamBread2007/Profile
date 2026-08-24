@@ -76,14 +76,18 @@ export default function MusicPlayer() {
   const [trackTitle, setTrackTitle] = useState<string | null>(null);
   const [coverUrl, setCoverUrl] = useState<string | null>(null);
 
-  // Fetch title + artwork for the currently playing embed track.
+  // Fetch title + artwork for any Spotify URI or URL (playlist, track, album, episode).
   // Spotify's public oEmbed endpoint is CORS-enabled (no auth required).
-  async function loadTrackMeta(uri: string) {
-    const match = uri.match(/spotify:(?:track|episode):([A-Za-z0-9]+)/);
-    if (!match) return;
+  async function loadTrackMeta(source: string) {
+    let spotifyUrl = source;
+    if (source.startsWith("spotify:")) {
+      const match = source.match(/spotify:(playlist|track|episode|album):([A-Za-z0-9]+)/);
+      if (!match) return;
+      spotifyUrl = `https://open.spotify.com/${match[1]}/${match[2]}`;
+    }
     try {
       const res = await fetch(
-        `https://open.spotify.com/oembed?url=${encodeURIComponent(`https://open.spotify.com/track/${match[1]}`)}`,
+        `https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`,
       );
       if (!res.ok) return;
       const meta = (await res.json()) as { title?: string; thumbnail_url?: string };
@@ -93,6 +97,11 @@ export default function MusicPlayer() {
   }
 
   useEffect(() => {
+    // Pre-fetch playlist metadata immediately on page load so the title & artwork show up right away
+    if (site.music.playlistUrl) {
+      void loadTrackMeta(site.music.playlistUrl);
+    }
+
     const uri = extractSpotifyUri(site.music.playlistUrl ?? "");
     const host = hostRef.current;
     if (!uri || !host) return;
