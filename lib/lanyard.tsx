@@ -30,9 +30,9 @@ export type Activity = {
 
 export type Presence = {
   discord_status: "online" | "idle" | "dnd" | "offline";
-  activities: Activity[];
-  listening_to_spotify: boolean;
-  spotify: Spotify | null;
+  activities?: Activity[];
+  listening_to_spotify?: boolean;
+  spotify?: Spotify | null;
 };
 
 type LanyardState = {
@@ -67,31 +67,39 @@ export function LanyardProvider({ children }: { children: ReactNode }) {
 
     function connect() {
       if (closed) return;
-      const ws = new WebSocket(WS_URL);
-      socketRef.current = ws;
+      try {
+        const ws = new WebSocket(WS_URL);
+        socketRef.current = ws;
 
-      ws.onopen = () => setState((s) => ({ ...s, connected: true }));
+        ws.onopen = () => setState((s) => ({ ...s, connected: true }));
 
-      ws.onmessage = (event) => {
-        const msg = JSON.parse(event.data as string) as SocketMessage;
-        if (msg.op === 1) {
-          const { heartbeat_interval } = msg.d;
-          ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
+        ws.onmessage = (event) => {
+          try {
+            const msg = JSON.parse(event.data as string) as SocketMessage;
+            if (msg.op === 1) {
+              const { heartbeat_interval } = msg.d;
+              ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
+              if (heartbeat.current) clearInterval(heartbeat.current);
+              heartbeat.current = setInterval(
+                () => ws.readyState === WebSocket.OPEN && ws.send(JSON.stringify({ op: 3 })),
+                heartbeat_interval,
+              );
+            } else if (msg.op === 0 && (msg.t === "INIT_STATE" || msg.t === "PRESENCE_UPDATE")) {
+              setState({ presence: msg.d as Presence, connected: true });
+            }
+          } catch {}
+        };
+
+        ws.onclose = () => {
+          setState((s) => ({ ...s, connected: false }));
           if (heartbeat.current) clearInterval(heartbeat.current);
-          heartbeat.current = setInterval(
-            () => ws.readyState === WebSocket.OPEN && ws.send(JSON.stringify({ op: 3 })),
-            heartbeat_interval,
-          );
-        } else if (msg.op === 0 && (msg.t === "INIT_STATE" || msg.t === "PRESENCE_UPDATE")) {
-          setState({ presence: msg.d as Presence, connected: true });
-        }
-      };
+          if (!closed) setTimeout(connect, 3000);
+        };
 
-      ws.onclose = () => {
-        setState((s) => ({ ...s, connected: false }));
-        if (heartbeat.current) clearInterval(heartbeat.current);
-        if (!closed) setTimeout(connect, 3000);
-      };
+        ws.onerror = () => {
+          ws.close();
+        };
+      } catch {}
     }
 
     connect();
@@ -121,9 +129,10 @@ const CODE_EDITORS = [
   "webstorm",
 ];
 
-function findEditorActivity(activities: Activity[]): Activity | undefined {
+function findEditorActivity(activities?: Activity[]): Activity | undefined {
+  if (!activities || !Array.isArray(activities)) return undefined;
   return activities.find(
-    (a) => a.type === 0 && CODE_EDITORS.includes(a.name.toLowerCase()),
+    (a) => a && a.type === 0 && a.name && CODE_EDITORS.includes(a.name.toLowerCase()),
   );
 }
 
@@ -133,9 +142,10 @@ export function useStatuses() {
   const spotify =
     presence?.listening_to_spotify && presence.spotify ? presence.spotify : null;
 
-  const editor = presence ? findEditorActivity(presence.activities) : undefined;
-  const game = presence?.activities.find(
-    (a) => a.type === 0 && a !== editor,
+  const activities = presence?.activities && Array.isArray(presence.activities) ? presence.activities : [];
+  const editor = findEditorActivity(activities);
+  const game = activities.find(
+    (a) => a && a.type === 0 && a !== editor,
   );
 
   return {
