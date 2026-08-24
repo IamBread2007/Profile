@@ -83,6 +83,10 @@ export const site = {
     title: "co cong mai sac",
     artist: "remix",
     coverUrl: "/avatar.jpg",
+
+    // Spotify URL powering the floating music box (playlist, album, or track).
+    // Played through the official Spotify Embed — visitors hear it without logging in.
+    playlistUrl: "https://open.spotify.com/playlist/5vVSfOsF8YRueAI1dOI0Lh",
   },
 
   terminalBootSequence: [
