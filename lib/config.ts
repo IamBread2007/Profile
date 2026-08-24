@@ -120,6 +120,13 @@ export const site = {
           "How I built a full-stack Japanese dictionary with bilingual meanings, SM-2 SRS flashcard reviews, and kanji stroke order animations using Next.js and Convex.",
         url: "https://vjisho.vercel.app",
       },
+      {
+        title: "HCMUT Admission Score Calculator (-calculus)",
+        date: "2026-02-28",
+        summary:
+          "Building a web tool to calculate and simulate comprehensive admission scores for Ho Chi Minh City University of Technology (HCMUT).",
+        url: "https://iambread2007.github.io/-calculus/",
+      },
     ],
   },
 
@@ -147,6 +154,14 @@ export const site = {
       tech: ["Next.js", "TypeScript", "Convex", "Tailwind CSS"],
       url: "https://vjisho.vercel.app",
       repo: "https://github.com/IamBread2007/VJisho",
+    },
+    {
+      name: "HCMUT Score Calculator",
+      description:
+        "Web application to calculate and simulate admission scores for Ho Chi Minh City University of Technology (HCMUT / ĐHQG-HCM).",
+      tech: ["JavaScript", "HTML5", "CSS3"],
+      url: "https://iambread2007.github.io/-calculus/",
+      repo: "https://github.com/IamBread2007/-calculus",
     },
     {
       name: "My portfolio",
