@@ -80,10 +80,9 @@ export const site = {
   ] satisfies SocialLink[],
 
   music: {
-    title: "Cozy Coffee Shop ☕ Jazz",
-    artist: "Spotify Playlist",
-    coverUrl:
-      "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84c089d11c70e4089ba3e6ac56",
+    title: "Spotify Playlist",
+    artist: "Spotify",
+    coverUrl: "/avatar.jpg",
 
     // Spotify URL powering the floating music box (playlist, album, or track).
     // Played through the official Spotify Embed — visitors hear it without logging in.
