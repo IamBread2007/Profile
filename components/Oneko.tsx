@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { site } from "@/lib/config";
+import { getNekoSpriteUrl } from "@/lib/security";
 
 const SPRITE_SIZE = 32;
 const NEKO_SPEED = 10;
@@ -79,7 +80,7 @@ function resolveSpriteUrl(variant?: string): string {
       : null) ||
     "maia";
 
-  return `/images/oneko/${skin}.gif`;
+  return getNekoSpriteUrl(skin);
 }
 
 export default function Oneko() {
@@ -106,7 +107,7 @@ export default function Oneko() {
     let idleAnimationFrame = 0;
     let lastFrameTimestamp: number | undefined;
 
-    element.style.backgroundImage = `url(${resolveSpriteUrl()})`;
+    element.style.backgroundImage = `url("${resolveSpriteUrl()}")`;
     element.style.left = `${nekoPosX - SPRITE_SIZE / 2}px`;
     element.style.top = `${nekoPosY - SPRITE_SIZE / 2}px`;
 
@@ -114,7 +115,7 @@ export default function Oneko() {
     function handleVariantChanged(e: Event) {
       const customEvent = e as CustomEvent<{ variant: string }>;
       if (customEvent.detail?.variant) {
-        element.style.backgroundImage = `url(${resolveSpriteUrl(customEvent.detail.variant)})`;
+        element.style.backgroundImage = `url("${resolveSpriteUrl(customEvent.detail.variant)}")`;
       }
     }
 

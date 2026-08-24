@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { site } from "@/lib/config";
+import { getValidHeartbeatInterval, isPresencePayload } from "@/lib/security";
 
 export type Spotify = {
   track_id?: string;
@@ -47,10 +48,6 @@ const LanyardContext = createContext<LanyardState>({
 
 const WS_URL = "wss://api.lanyard.rest/socket";
 
-type SocketMessage =
-  | { op: 1; d: { heartbeat_interval: number } }
-  | { op: 0; t: string; d: unknown };
-
 export function LanyardProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<LanyardState>({
     presence: null,
@@ -75,17 +72,29 @@ export function LanyardProvider({ children }: { children: ReactNode }) {
 
         ws.onmessage = (event) => {
           try {
-            const msg = JSON.parse(event.data as string) as SocketMessage;
-            if (msg.op === 1) {
-              const { heartbeat_interval } = msg.d;
+            const msg: unknown = JSON.parse(event.data as string);
+            if (!msg || typeof msg !== "object" || !("op" in msg)) return;
+            const operation = msg as { op?: unknown; d?: unknown; t?: unknown };
+            if (operation.op === 1) {
+              if (!operation.d || typeof operation.d !== "object" || !("heartbeat_interval" in operation.d)) {
+                return;
+              }
+              const heartbeatInterval = getValidHeartbeatInterval(
+                (operation.d as { heartbeat_interval?: unknown }).heartbeat_interval,
+              );
+              if (heartbeatInterval === null) return;
               ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: userId } }));
               if (heartbeat.current) clearInterval(heartbeat.current);
               heartbeat.current = setInterval(
                 () => ws.readyState === WebSocket.OPEN && ws.send(JSON.stringify({ op: 3 })),
-                heartbeat_interval,
+                heartbeatInterval,
               );
-            } else if (msg.op === 0 && (msg.t === "INIT_STATE" || msg.t === "PRESENCE_UPDATE")) {
-              setState({ presence: msg.d as Presence, connected: true });
+            } else if (
+              operation.op === 0 &&
+              (operation.t === "INIT_STATE" || operation.t === "PRESENCE_UPDATE") &&
+              isPresencePayload(operation.d)
+            ) {
+              setState({ presence: operation.d as Presence, connected: true });
             }
           } catch {}
         };
@@ -132,7 +141,11 @@ const CODE_EDITORS = [
 function findEditorActivity(activities?: Activity[]): Activity | undefined {
   if (!activities || !Array.isArray(activities)) return undefined;
   return activities.find(
-    (a) => a && a.type === 0 && a.name && CODE_EDITORS.includes(a.name.toLowerCase()),
+    (a) =>
+      a &&
+      a.type === 0 &&
+      typeof a.name === "string" &&
+      CODE_EDITORS.includes(a.name.toLowerCase()),
   );
 }
 
