@@ -140,6 +140,14 @@ export const site = {
 
   projects: [
     {
+      name: "VJisho",
+      description:
+        "Japanese dictionary & JLPT learning platform with bilingual (Vietnamese/English) meanings, SM-2 spaced repetition flashcards, and animated kanji stroke orders.",
+      tech: ["Next.js", "TypeScript", "Convex", "Tailwind CSS"],
+      url: "https://vjisho.vercel.app",
+      repo: "https://github.com/IamBread2007/VJisho",
+    },
+    {
       name: "This website",
       description:
         "My personal profile page — built with Next.js, Tailwind and DaisyUI.",
