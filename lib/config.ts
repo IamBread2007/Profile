@@ -22,7 +22,7 @@ export const site = {
   backgroundOpacity: 0.45,
 
   // Your birthday, used for the age + countdown line.
-  birthday: { year: 2007, month: 11, day: 24 },
+  birthday: { year: 2007, month: 8, day: 31 },
 
   // Discord user ID (numbers only) to power the live statuses via Lanyard.
   // Join https://discord.gg/lanyard with the bot once to activate it.

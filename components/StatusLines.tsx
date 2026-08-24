@@ -19,16 +19,26 @@ function useNow(intervalMs = 1000) {
 
 function birthdayInfo(now: Date) {
   const { year, month, day } = site.birthday;
-  const isToday =
-    now.getMonth() === month - 1 && now.getDate() === day;
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 1-12
+  const currentDate = now.getDate();
 
-  let target = new Date(now.getFullYear(), month - 1, day);
-  if (!isToday && target.getTime() <= now.getTime()) {
-    target = new Date(now.getFullYear() + 1, month - 1, day);
+  // True for the whole day of birthday (31/08)
+  const isToday = currentMonth === month && currentDate === day;
+
+  // Calculate current age
+  let age = currentYear - year;
+  if (currentMonth < month || (currentMonth === month && currentDate < day)) {
+    age = currentYear - year - 1;
   }
 
-  const age = now.getFullYear() - year;
-  const msLeft = Math.max(0, target.getTime() - now.getTime());
+  // Next birthday target
+  let nextBirthday = new Date(currentYear, month - 1, day, 0, 0, 0, 0);
+  if (now.getTime() >= nextBirthday.getTime()) {
+    nextBirthday = new Date(currentYear + 1, month - 1, day, 0, 0, 0, 0);
+  }
+
+  const msLeft = Math.max(0, nextBirthday.getTime() - now.getTime());
   return { age, isToday, msLeft };
 }
 
@@ -53,11 +63,14 @@ export default function StatusLines() {
         <TbCake className="size-5 shrink-0 text-accent" />
         {info ? (
           <span>
-            {info.age} years old •{" "}
             {info.isToday ? (
-              <span className="text-primary font-bold">Happy birthday! 🎂</span>
+              <span className="text-primary font-bold">
+                🎂 Happy Birthday! 🎉 Wishing you a wonderful and joyful day!
+              </span>
             ) : (
-              <>{formatCountdown(info.msLeft)} until next birthday</>
+              <>
+                {info.age} years old • {formatCountdown(info.msLeft)} until next birthday
+              </>
             )}
           </span>
         ) : (
