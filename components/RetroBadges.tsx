@@ -2,9 +2,9 @@
 
 export default function RetroBadges() {
   return (
-    <footer className="mt-8 mb-4 flex flex-col items-center select-none text-center max-w-xl w-full">
+    <footer className="mt-10 mb-4 flex flex-col items-center select-none text-center max-w-xl w-full">
       {/* Attribution footer */}
-      <p className="text-[11px] font-mono text-base-content/40 leading-relaxed">
+      <p className="text-xs sm:text-[13px] font-mono text-base-content/40 leading-relaxed">
         Current oneko animation by{" "}
         <a
           href="https://maia.crimew.gay"

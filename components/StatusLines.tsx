@@ -11,7 +11,7 @@ function KuroGamesIcon({ className }: { className?: string }) {
     <img
       src="/images/kuro-games-icon.png"
       alt="Kuro Games"
-      className={`${className || "size-5"} object-contain shrink-0`}
+      className={`${className || "size-6"} object-contain shrink-0`}
     />
   );
 }
@@ -67,9 +67,9 @@ export default function StatusLines() {
   const info = now ? birthdayInfo(now) : null;
 
   return (
-    <div className="inline-flex flex-col items-start text-left gap-2.5 font-mono text-sm text-base-content/85 mx-auto">
-      <p className="flex items-center gap-2.5">
-        <TbCake className="size-5 shrink-0 text-accent" />
+    <div className="inline-flex flex-col items-start text-left gap-3 sm:gap-3.5 font-mono text-base sm:text-lg text-base-content/85 mx-auto">
+      <p className="flex items-center gap-3">
+        <TbCake className="size-6 shrink-0 text-accent" />
         {info ? (
           <span>
             {info.isToday ? (
@@ -87,9 +87,9 @@ export default function StatusLines() {
         )}
       </p>
 
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-3">
         <FaSpotify
-          className={`size-5 shrink-0 ${statuses.spotify ? "text-[#1ed760]" : ""}`}
+          className={`size-6 shrink-0 ${statuses.spotify ? "text-[#1ed760]" : ""}`}
         />
         {statuses.enabled ? (
           statuses.spotify ? (
@@ -113,8 +113,8 @@ export default function StatusLines() {
         )}
       </p>
 
-      <p className="flex items-center gap-2">
-        <TbBrandVscode className="size-5 shrink-0" />
+      <p className="flex items-center gap-3">
+        <TbBrandVscode className="size-6 shrink-0" />
         {statuses.editor ? (
           <span>
             Coding in {statuses.editor.name}
@@ -125,8 +125,8 @@ export default function StatusLines() {
         )}
       </p>
 
-      <p className="flex items-center gap-2">
-        <KuroGamesIcon className="size-5 shrink-0" />
+      <p className="flex items-center gap-3">
+        <KuroGamesIcon className="size-6 shrink-0" />
         {statuses.game ? <span>Playing {statuses.game.name}</span> : <span>Not playing anything</span>}
       </p>
     </div>
