@@ -119,6 +119,13 @@ export const site = {
         summary: "Real-time presence updates using WebSocket and Lanyard API.",
         url: "#",
       },
+      {
+        title: "Building VJisho — Japanese & JLPT Learning Platform",
+        date: "2026-08-04",
+        summary:
+          "How I built a full-stack Japanese dictionary with bilingual meanings, SM-2 SRS flashcard reviews, and kanji stroke order animations using Next.js and Convex.",
+        url: "https://vjisho.vercel.app",
+      },
     ],
   },
 

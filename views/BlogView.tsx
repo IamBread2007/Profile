@@ -25,19 +25,33 @@ export default function BlogView() {
             {site.blog.posts.map((post, idx) => (
               <div
                 key={idx}
-                className="card border border-base-content/10 bg-base-300/70 p-5 transition-all duration-300 hover:border-primary/40 shadow-sm"
+                className="card border border-base-content/10 bg-base-300/70 p-5 transition-all duration-300 hover:border-primary/40 shadow-sm flex flex-col justify-between"
               >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="font-mono text-base sm:text-lg font-bold text-primary">
-                    {post.title}
-                  </h3>
-                  <span className="font-mono text-xs text-base-content/50">
-                    {post.date}
-                  </span>
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="font-mono text-base sm:text-lg font-bold text-primary">
+                      {post.title}
+                    </h3>
+                    <span className="font-mono text-xs text-base-content/50">
+                      {post.date}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-base-content/80 font-sans leading-relaxed">
+                    {post.summary}
+                  </p>
                 </div>
-                <p className="mt-2 text-sm text-base-content/80 font-sans leading-relaxed">
-                  {post.summary}
-                </p>
+                {post.url && post.url !== "#" && (
+                  <div className="mt-4 pt-3 border-t border-base-content/10 flex justify-end">
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-soft btn-accent btn-xs font-mono cursor-pointer"
+                    >
+                      visit ↗
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
