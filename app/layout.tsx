@@ -13,7 +13,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" data-theme="catppuccin-macchiato" className="bg-base-300">
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <div className="bgeffect" aria-hidden="true" />
         <div className="scanlines" aria-hidden="true" />
         {children}
