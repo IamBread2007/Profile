@@ -248,7 +248,7 @@ export default function handleTyping(
     .type("====================] 100%", { instant: true, delay: 150 })
     .delete(40, { instant: true })
     .type(
-      '<span class="text-success font-bold" style="cursor: pointer;" onclick="window.__hideLoading && window.__hideLoading()">Successfully deployed the website, available at <u>http://localhost:3000</u>.</span>',
+      '<span class="text-success font-bold" style="cursor: pointer;" onclick="window.__hideLoading && window.__hideLoading()">Successfully deployed the website, available at <u>https://iambread.id.vn</u>.</span>',
       { instant: true },
     )
     .pause(1800)
