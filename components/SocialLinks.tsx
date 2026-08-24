@@ -52,24 +52,36 @@ const ICONS: Record<
 
 export default function SocialLinks() {
   return (
-    <div className="my-3 flex flex-wrap justify-center gap-2">
-      {site.socials.map(({ icon, label, href }: SocialLink) => {
+    <div className="my-3 flex flex-wrap justify-center gap-2 sm:gap-3">
+      {site.socials.map(({ icon, label, href, username }: SocialLink) => {
         const entry = ICONS[icon];
         if (!entry) return null;
         const { Icon, color } = entry;
+        const displayUsername = username || label;
+
         return (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`My ${label} profile`}
-            title={label}
-            className="transition-transform duration-300 ease-in-out hover:scale-125 [&:hover]:text-(--social-color)"
-            style={{ "--social-color": color } as CSSProperties}
-          >
-            <Icon className="size-8" />
-          </a>
+          <div key={label} className="relative group flex flex-col items-center">
+            {/* Speech Bubble Popup Tooltip (1:1 with stefdp.com) */}
+            <div className="pointer-events-none absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 opacity-0 scale-90 translate-y-2 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out">
+              <div className="whitespace-nowrap rounded-full bg-white px-3 py-1 text-xs font-bold text-[#151b23] shadow-2xl tracking-tight select-none">
+                {label}: {displayUsername}
+              </div>
+              {/* Downward pointing triangle arrow */}
+              <div className="size-0 border-x-[5px] border-x-transparent border-t-[6px] border-t-white -mt-[1px]" />
+            </div>
+
+            {/* Social Link Icon */}
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`My ${label} profile`}
+              className="relative p-1 transition-transform duration-300 ease-in-out hover:scale-125 [&:hover]:text-(--social-color) text-base-content/90 cursor-pointer"
+              style={{ "--social-color": color } as CSSProperties}
+            >
+              <Icon className="size-7 sm:size-8" />
+            </a>
+          </div>
         );
       })}
     </div>

@@ -22,24 +22,61 @@ export const site = {
   backgroundOpacity: 0.45,
 
   // Your birthday, used for the age + countdown line.
-  birthday: { year: 2000, month: 1, day: 1 },
+  birthday: { year: 2007, month: 11, day: 24 },
 
   // Discord user ID (numbers only) to power the live statuses via Lanyard.
   // Join https://discord.gg/lanyard with the bot once to activate it.
-  // Leave "" to show static placeholder statuses.
-  discordUserId: "",
+  discordUserId: "1193932492856635473",
 
   socials: [
-    { icon: "mail", label: "Mail", href: "mailto:ssdarealeast@proton.me" },
-    { icon: "discord", label: "Discord", href: "https://discord.com/users/0" },
-    { icon: "github", label: "GitHub", href: "https://github.com/akk1to" },
-    { icon: "instagram", label: "Instagram", href: "https://instagram.com" },
-    { icon: "reddit", label: "Reddit", href: "https://reddit.com" },
-    { icon: "spotify", label: "Spotify", href: "https://open.spotify.com" },
-    { icon: "steam", label: "Steam", href: "https://steamcommunity.com" },
-    { icon: "telegram", label: "Telegram", href: "https://t.me" },
-    { icon: "tiktok", label: "TikTok", href: "https://tiktok.com" },
-    { icon: "youtube", label: "YouTube", href: "https://youtube.com" },
+    {
+      icon: "mail",
+      label: "Mail",
+      href: "mailto:quangvinh2wb2007@gmail.com",
+      username: "quangvinh2wb2007@gmail.com",
+    },
+    {
+      icon: "discord",
+      label: "Discord",
+      href: "https://discord.com/users/1193932492856635473",
+      username: "iambread0752",
+    },
+    {
+      icon: "github",
+      label: "GitHub",
+      href: "https://github.com/IamBread2007",
+      username: "IamBread2007",
+    },
+    {
+      icon: "reddit",
+      label: "Reddit",
+      href: "https://www.reddit.com/user/IamBread24112007/",
+      username: "IamBread24112007",
+    },
+    {
+      icon: "spotify",
+      label: "Spotify",
+      href: "https://open.spotify.com/user/31ijvweuahifkjty65ripwies3fi",
+      username: "IamBread",
+    },
+    {
+      icon: "telegram",
+      label: "Telegram",
+      href: "https://t.me/lamBread207",
+      username: "lamBread207",
+    },
+    {
+      icon: "tiktok",
+      label: "TikTok",
+      href: "https://www.tiktok.com/@iambread817",
+      username: "@iambread817",
+    },
+    {
+      icon: "youtube",
+      label: "YouTube",
+      href: "https://www.youtube.com/@vinh230",
+      username: "@vinh230",
+    },
   ] satisfies SocialLink[],
 
   music: {
@@ -103,16 +140,16 @@ export const site = {
       description:
         "My personal profile page — built with Next.js, Tailwind and DaisyUI.",
       tech: ["Next.js", "Tailwind CSS", "DaisyUI"],
-      url: "https://example.com",
-      repo: "https://github.com/akk1to/profile",
+      url: "https://iambread.id.vn",
+      repo: "https://github.com/IamBread2007/Profile",
     },
     {
       name: "Discord Presence Widget",
       description:
         "Real-time Spotify and code editor status integration via Lanyard API.",
       tech: ["TypeScript", "WebSocket"],
-      url: "https://example.com",
-      repo: "https://github.com/akk1to",
+      url: "https://iambread.id.vn",
+      repo: "https://github.com/IamBread2007/Profile",
     },
   ] satisfies Project[],
 
@@ -126,6 +163,7 @@ export type SocialLink = {
   icon: IconName;
   label: string;
   href: string;
+  username?: string;
 };
 
 export type Project = {
