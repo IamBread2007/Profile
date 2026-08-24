@@ -148,18 +148,10 @@ export const site = {
       repo: "https://github.com/IamBread2007/VJisho",
     },
     {
-      name: "This website",
+      name: "My portfolio",
       description:
-        "My personal profile page — built with Next.js, Tailwind and DaisyUI.",
-      tech: ["Next.js", "Tailwind CSS", "DaisyUI"],
-      url: "https://iambread.id.vn",
-      repo: "https://github.com/IamBread2007/Profile",
-    },
-    {
-      name: "Discord Presence Widget",
-      description:
-        "Real-time Spotify and code editor status integration via Lanyard API.",
-      tech: ["TypeScript", "WebSocket"],
+        "My personal profile website with real-time Discord/Spotify presence, background music streaming, and interactive neko companion.",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "DaisyUI", "WebSocket"],
       url: "https://iambread.id.vn",
       repo: "https://github.com/IamBread2007/Profile",
     },
