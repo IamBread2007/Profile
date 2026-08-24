@@ -50,14 +50,14 @@ export const site = {
 
   terminalBootSequence: [
     { type: "cmd", text: "whoami" },
-    { type: "out", text: "> IamBread :: developer • tinkerer • thinker" },
+    { type: "out", text: "> IamBread :: developer • hcmuter • thinker" },
     { type: "cmd", text: "./init-profile.sh" },
     { type: "out", text: "[✓] Ready to launch interface!" },
   ],
 
   terminalLines: [
     "$ whoami",
-    "> IamBread / developer & tinkerer",
+    "> IamBread / developer & hcmuter",
     "$ neko --follow",
     "> meow :3",
   ],

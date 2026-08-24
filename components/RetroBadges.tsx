@@ -69,7 +69,25 @@ export default function RetroBadges() {
 
       {/* Attribution footer */}
       <p className="mt-2 text-[11px] font-mono text-base-content/40 leading-relaxed">
-        Current oneko animation by maia.crimew.gay • Profile fork for IamBread
+        Current oneko animation by{" "}
+        <a
+          href="https://maia.crimew.gay"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline hover:text-base-content/70"
+        >
+          maia.crimew.gay
+        </a>{" "}
+        - This profile is a fork from{" "}
+        <a
+          href="https://stefdp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline hover:text-base-content/70"
+        >
+          stefdp.com
+        </a>
+        .
       </p>
     </div>
   );

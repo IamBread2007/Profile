@@ -8,9 +8,9 @@ type TerminalIntroProps = {
 
 const SCRIPT_LINES = [
   { type: "prompt", text: "whoami" },
-  { type: "output", text: "Alexoy Vladimirov — passionate developer" },
+  { type: "output", text: "IamBread — passionate developer" },
   { type: "prompt", text: "cat ./status.txt" },
-  { type: "output", text: "developer • tinkerer • cat person ( ˘-˘ ) 💭" },
+  { type: "output", text: "developer • hcmuter • cat person ( ˘-˘ ) 💭" },
   { type: "prompt", text: "./init-profile.sh --theme catppuccin-macchiato" },
   { type: "output", text: "[✓] Loading profile metadata and avatar..." },
   { type: "output", text: "[✓] Connecting to Discord Lanyard WebSocket gateway..." },
