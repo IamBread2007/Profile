@@ -30,7 +30,7 @@ export default function BlogModal({ isOpen, onClose }: BlogModalProps) {
                 {post.summary}
               </p>
             </div>
-            {post.url && post.url !== "#" && (
+            {Boolean(post.url) && (
               <div className="mt-3 pt-2 border-t border-base-content/10 flex justify-end">
                 <a
                   href={post.url}

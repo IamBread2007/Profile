@@ -107,17 +107,11 @@ export const site = {
     heading: "/blog",
     posts: [
       {
-        title: "Welcome to my portfolio",
+        title: "Building my Portfolio & Discord Live Presence",
         date: "2026-08-20",
         summary:
-          "A brief look into how this site was built with Next.js, Tailwind, and DaisyUI.",
-        url: "#",
-      },
-      {
-        title: "Setting up Lanyard & Discord Rich Presence",
-        date: "2026-08-15",
-        summary: "Real-time presence updates using WebSocket and Lanyard API.",
-        url: "#",
+          "A look into how this site was built with Next.js, Tailwind, DaisyUI, and real-time Spotify/Discord status integration via Lanyard API.",
+        url: "https://iambread.id.vn",
       },
       {
         title: "Building VJisho — Japanese & JLPT Learning Platform",
