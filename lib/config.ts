@@ -86,7 +86,8 @@ export const site = {
 
     // Spotify URL powering the floating music box (playlist, album, or track).
     // Played through the official Spotify Embed — visitors hear it without logging in.
-    playlistUrl: "https://open.spotify.com/album/72Y5bHjwM0AJQG2zfkhaLX",
+    playlistUrl:
+      "https://open.spotify.com/playlist/6LoGePs8eyr10O8kX20Ubh?si=_KKYjfLKRIqkvNVdRb4uwQ&utm_source=copy-link&nd=1&dlsi=d04a719b7c5c4841",
   },
 
   terminalBootSequence: [
