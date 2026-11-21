@@ -84,7 +84,7 @@ export default function AboutView() {
                 </div>
               </div>
             ) : (
-              <div className="mockup-code bg-base-300/80 text-xs sm:text-sm font-mono border border-base-content/10 rounded-xl overflow-x-auto shadow-inner">
+              <div className="mockup-code bg-base-300/80 text-base-content text-xs sm:text-sm font-mono border border-base-content/10 rounded-xl overflow-x-auto shadow-inner">
                 {aboutCodeString.split("\n").map((line, idx) => (
                   <pre key={idx} data-prefix={idx + 1}>
                     <code>{line}</code>
@@ -101,7 +101,7 @@ export default function AboutView() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <img
-                src="https://github-readme-stats.vercel.app/api?username=akk1to&show_icons=true&theme=catppuccin_mocha&line_height=30"
+                src="https://github-readme-stats.vercel.app/api?username=IamBread2007&show_icons=true&theme=catppuccin_mocha&line_height=30"
                 alt="GitHub Stats"
                 className="w-full rounded-lg border border-base-content/10"
                 onError={(e) => {
@@ -109,7 +109,7 @@ export default function AboutView() {
                 }}
               />
               <img
-                src="https://github-readme-stats.vercel.app/api/top-langs/?username=akk1to&theme=catppuccin_mocha&layout=compact"
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=IamBread2007&theme=catppuccin_mocha&layout=compact"
                 alt="Top Languages"
                 className="w-full rounded-lg border border-base-content/10"
                 onError={(e) => {

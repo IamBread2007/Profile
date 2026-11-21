@@ -10,6 +10,8 @@ export interface Companion {
   creditsUrl?: string;
 }
 
+export const DEFAULT_COMPANION_ID = "maia";
+
 export const COMPANIONS: Companion[] = [
   {
     id: "classic",
@@ -50,7 +52,7 @@ export const COMPANIONS: Companion[] = [
 
 export default function NekoSelector() {
   const [open, setOpen] = useState(false);
-  const [currentSkin, setCurrentSkin] = useState<string>("maia");
+  const [currentSkin, setCurrentSkin] = useState<string>(DEFAULT_COMPANION_ID);
 
   useEffect(() => {
     const skinParam = new URLSearchParams(window.location.search).get("neko");
@@ -60,7 +62,8 @@ export default function NekoSelector() {
   }, []);
 
   const activeCompanion =
-    COMPANIONS.find((c) => c.id === currentSkin) || COMPANIONS[2]; // Default to Maia
+    COMPANIONS.find((c) => c.id === currentSkin) ||
+    COMPANIONS.find((c) => c.id === DEFAULT_COMPANION_ID)!;
 
   const selectCompanion = (c: Companion) => {
     setCurrentSkin(c.id);

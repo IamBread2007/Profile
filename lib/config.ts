@@ -118,8 +118,8 @@ export const site = {
         title: "Building VJisho — Japanese & JLPT Learning Platform",
         date: "2026-08-04",
         summary:
-          "How I built a full-stack Japanese dictionary with bilingual meanings, SM-2 SRS flashcard reviews, and kanji stroke order animations using Next.js and Convex.",
-        url: "https://vjisho.vercel.app",
+          "How I built a full-stack Japanese dictionary with Vietnamese/English meanings, SM-2 flashcard reviews, JLPT practice, and kanji stroke order using a Next.js frontend and a Java Spring Boot backend.",
+        url: "https://vjisho.tech",
       },
       {
         title: "HCMUT Admission Score Calculator (-calculus)",
@@ -151,23 +151,28 @@ export const site = {
     {
       name: "VJisho",
       description:
-        "Japanese dictionary & JLPT learning platform with bilingual (Vietnamese/English) meanings, SM-2 spaced repetition flashcards, and animated kanji stroke orders.",
-      tech: ["Next.js", "TypeScript", "Convex", "Tailwind CSS"],
-      url: "https://vjisho.vercel.app",
-      repo: "https://github.com/IamBread2007/VJisho",
+        "Japanese dictionary & JLPT learning platform in Vietnamese or English: word and kanji lookup with readings and stroke order, SM-2 spaced-repetition flashcards, quizzes, JLPT practice tests, and personal notes tied to your Google account.",
+      tech: ["Next.js", "TypeScript", "Java", "Spring Boot", "MySQL", "Redis"],
+      url: "https://vjisho.tech",
+    },
+    {
+      name: "VTranslator",
+      description:
+        "Chrome extension + local server that translates Japanese, Korean, and Chinese manga/webtoons into Vietnamese right on the reading page: detects speech bubbles, OCRs and translates the text with AI, erases the original, and re-typesets it with a Rust/WebAssembly layout engine.",
+      tech: ["TypeScript", "Python", "Rust", "WebAssembly", "Chrome Extension"],
     },
     {
       name: "HCMUT Score Calculator",
       description:
-        "Web application to calculate and simulate admission scores for Ho Chi Minh City University of Technology (HCMUT / ĐHQG-HCM).",
-      tech: ["JavaScript", "HTML5", "CSS3"],
+        "Web tool to calculate and simulate admission scores for Ho Chi Minh City University of Technology (HCMUT / ĐHQG-HCM).",
+      tech: ["JavaScript", "HTML", "CSS"],
       url: "https://iambread2007.github.io/-calculus/",
       repo: "https://github.com/IamBread2007/-calculus",
     },
     {
       name: "My portfolio",
       description:
-        "My personal profile website with real-time Discord/Spotify presence, background music streaming, and interactive neko companion.",
+        "This site: retro terminal boot animation, real-time Discord/Spotify presence via Lanyard, a floating Spotify player, and selectable oneko companions.",
       tech: ["Next.js", "TypeScript", "Tailwind CSS", "DaisyUI", "WebSocket"],
       url: "https://iambread.id.vn",
       repo: "https://github.com/IamBread2007/Profile",
